@@ -38,4 +38,24 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// Add a server to keep the application running
+var server = app.listen(3000, function() {
+  console.log('Server started on port 3000');
+});
+
+// Add a never-ending loop to keep the script running
+setInterval(function() {
+  // Add your code here to perform necessary operations
+}, 1000); // Adjust the interval as needed
+
+// Or, if your application relies on events, add event listeners instead
+process.on('SIGINT', function() {
+  // Handle the SIGINT event
+});
+
+process.on('uncaughtException', function(err) {
+  // Handle uncaught exceptions
+});
+
+
 module.exports = app;
